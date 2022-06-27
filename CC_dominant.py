@@ -9,6 +9,7 @@ from multiprocessing.dummy import Process
 from pathlib import Path
 from collections import Counter
 from sklearn.cluster import KMeans
+from tqdm import tqdm
 from py_namethatcolor import get_color
 from colorgroups import ColorGroups
 
@@ -192,7 +193,7 @@ def start_dominant_colors(input_path, output_path, temp_dir, mode = 0):
     if mode == 0:
         multiprocessing.Semaphore(6)
         filenames_list = []
-        for filename in os.listdir(input_path):
+        for filename in tqdm(os.listdir(input_path), desc='Files'):
             path_image = img_path_check(filename, input_path)
             if path_image != None:
                 p = Process(target=get_colors,args=(path_image, 10, False, output_path, temp_dir))
