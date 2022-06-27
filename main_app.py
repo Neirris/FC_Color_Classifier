@@ -121,7 +121,7 @@ class Ui_MainWindow(main.Ui_MainWindow, QtWidgets.QMainWindow):
 
 
     def print_donut_chart(self):
-        img = QFileDialog.getOpenFileName(self, "Open File", "", "(*.jpg);;(*.png);;(*.webp);;(*jpeg)")
+        img = QFileDialog.getOpenFileName(self, "Open File", "", "(*.jpg);;(*.png);;(*.webp);;(*.jpeg)")
         img = str(Path(img[0]).resolve())
         donut_plot = start_dominant_colors(img, self.temp_dir.name, self.temp_dir.name, mode = 1)
         self.pix = QtGui.QPixmap(donut_plot).scaled(self.label.size(), QtCore.Qt.KeepAspectRatio, QtCore.Qt.SmoothTransformation)
